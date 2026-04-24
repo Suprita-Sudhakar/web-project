@@ -25,36 +25,31 @@ The system helps users predict outcomes based on input data and provides intelli
 
 project/
 │── manage.py  
-│── db.sqlite3  
-
+│── db.sqlite3 
 │── GUI/                     # Main Django project
 │   │── settings.py  
 │   │── urls.py  
-
 │── basics/                  # Application module
 │   │── models.py  
-│   │── views.py  ## 📊 Modules Explanation
-
-
+│   │── views.py  n
 │   │── urls.py  
 │   │── tests.py  
-
 │── templates/               # HTML templates  
 │── static/                  # CSS, JS, Images  
 │── media/                   # Uploaded files  
-
 │── dataset/                 # Machine learning datasets  
 │── models/                  # Saved ML models  
 
-## 📊 Modules Explanation
 
 ### 1. Placement Prediction
-Predicts whether a student will be placed based on academic performance and skills.
-
+This module predicts whether a student will be placed or not. If placed, it estimates salary; if not, it gives improvement suggestions based on performance.
 ### 2. Migraine Prediction
 Analyzes user health-related data to predict the possibility of migraine.
 
-### 3. Music Instrument Classification
+### 3. Music Instruments Classification
 Uses a Convolutional Neural Network (CNN) to classify different musical instruments from images.
+
 ## 📸 Screenshots
+<img width="1366" height="768" alt="Screenshot (49)" src="https://github.com/user-attachments/assets/6cdcbcd6-4a8b-418f-ad82-28235ac86fe0" />
+
 
