@@ -1,0 +1,242 @@
+{% block content %}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+
+        /* Base gradient */
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        overflow-x: hidden;
+    }
+
+    /* GRID (ML data feel) */
+    body::before {
+        content: "";
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+        background-size: 40px 40px;
+        z-index: -2;
+    }
+
+    /* FLOATING DATA NODES */
+    .circle {
+        position: fixed;
+        border-radius: 50%;
+        background: rgba(0, 198, 255, 0.2);
+        box-shadow: 0 0 20px rgba(0,198,255,0.6);
+        animation: float 8s infinite ease-in-out;
+        z-index: -1;
+    }
+
+    .c1 { width: 80px; height: 80px; top: 10%; left: 15%; }
+    .c2 { width: 120px; height: 120px; top: 70%; left: 80%; animation-delay: 2s; }
+    .c3 { width: 60px; height: 60px; top: 40%; left: 60%; animation-delay: 4s; }
+    .c4 { width: 100px; height: 100px; top: 80%; left: 20%; animation-delay: 1s; }
+
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+    }
+
+    /* GLOWING WAVE (AI effect) */
+    .wave {
+        position: fixed;
+        width: 200%;
+        height: 200px;
+        background: radial-gradient(circle, rgba(0,198,255,0.2), transparent);
+        bottom: 0;
+        left: -50%;
+        animation: waveMove 10s linear infinite;
+        z-index: -1;
+    }
+
+    @keyframes waveMove {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(50%); }
+    }
+</style>
+
+<!-- Background Elements -->
+<div class="circle c1"></div>
+<div class="circle c2"></div>
+<div class="circle c3"></div>
+<div class="circle c4"></div>
+<div class="wave"></div>
+
+<div style="display:flex; justify-content:center; margin-top:30px;">
+
+    <!-- YOUR CARD (UNCHANGED) -->
+    <div style="width:600px; background:linear-gradient(to right, #ff7e5f, #6dd5ed); padding:20px; border-radius:10px; color:white;">
+
+        <h2 style="text-align:center;">STUDENT PLACEMENT PREDICTION USING NAIVE-BAYES ALGORITHM</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <table style="width:100%;">
+                <tr>
+                    <td>Enter Your Branch:</td>
+                    <td>
+                    <select name="branch" required style="width:70%; padding:3px;">
+                    <option value="">-- Select Branch --</option>
+                    <option value="0">ECE</option>
+                    <option value="1">Chemical</option>
+                    <option value="2">EE</option>
+                    <option value="3">CE</option>
+                    <option value="4">CSE</option>
+                    <option value="5">IT</option>
+                    <option value="6">ME</option>
+                </select>
+                </td>
+                </tr>
+
+                <tr>
+                    <td>Enter College Rank:</td>
+                    <td>
+                        <select name="tier" required style="width:70%; padding:3px;">
+                        <option value="">-- Select Tier --</option>
+                        <option value="0">highest placement opportunities</option>
+                        <option value="1">decent placement opportunities</option>
+                        <option value="2">lower opportunities</option>
+                    </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Enter Your CGPA(1-10):</td>
+                    <td><input type="text" name="cgpa"></td>
+                </tr>
+
+                <tr>
+                    <td>Enter No.of Backlogs:</td>
+                    <td><input type="text" name="backlog"></td>
+                </tr>
+
+                <tr>
+                    <td>Enter Your Number of Skills:</td>
+                    <td><input type="text" name="skills"></td>
+                </tr>
+
+                <tr>
+                    <td>Enter Your DSA score:</td>
+                    <td><input type="text" name="dsa"></td>
+                </tr>
+
+                <tr>
+                    <td>Enter Your Aptitude score:</td>
+                    <td><input type="text" name="aptitude"></td>
+                </tr>
+
+                <tr>
+                    <td>enter Your Communication Score:</td>
+                    <td><input type="text" name="communication"></td>
+                </tr>
+
+                <tr>
+                    <td>Enter Your ML-Knowledge(in percentage):</td>
+                    <td><input type="text" name="ml"></td>
+                </tr>
+
+                <tr>
+                    <td>Enter System Design:</td>
+                    <td><input type="text" name="system"></td>
+                </tr>
+
+                <tr>
+                    <td>Enter Your Number of Internships:</td>
+                    <td><input type="text" name="internship"></td>
+                </tr>
+
+                <tr>
+                    <td>Enter Your No. of Projects:</td>
+                    <td><input type="text" name="project"></td>
+                </tr>
+
+                <tr>
+                    <td>enter Your No. of Certifications:</td>
+                    <td><input type="text" name="certificate"></td>
+                </tr>
+
+                <tr>
+                    <td>Enter Your No. hackthons:</td>
+                    <td><input type="text" name="hackthon"></td>
+                </tr>
+
+                <tr>
+                    <td>Enter No.of Open Source Contributions:</td>
+                    <td><input type="text" name="open"></td>
+                </tr>
+
+                <tr>
+                    <td>Enter the No. of Extracurriculars:</td>
+                    <td><input type="text" name="Extracurriculars"></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" style="text-align:center; padding-top:10px;">
+                        <button type="submit" name="buttonadd" style="padding:10px 20px; background:#007bff; color:white; border:none; border-radius:5px;">
+                            Predict
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        {% if status %}
+        <div style="margin-top:20px; background:white; color:black; padding:15px; border-radius:8px;">
+            <h3>Result:</h3>
+
+            {% if status == "Placed" %}
+                <p style="color:green; font-weight:bold;">✅ Student Placed</p>
+                <p><b>💰 Salary:</b> {{ salary }} LPA</p>
+
+            {% elif status == "Not Placed" %}
+                <p style="color:red; font-weight:bold;">❌ Student Not Placed</p>
+
+                {% if suggestions %}
+                <h4>📈 Suggestions:</h4>
+                <ul>
+                    {% for s in suggestions %}
+                        <li>{{ s }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            {% endif %}
+
+            <p><b>📊 Accuracy:</b> {{ accuracy }}%</p>
+            <p>Result has been saved in the comparison page.</p>
+            <p>Proceed to predict using the next algorithm.</p>
+        </div>
+        {% endif %}
+
+<!-- NAV BUTTON -->     
+    <div style="text-align:center;
+    margin-top:15px;">            
+    <a href="{% url 'knearest' %}" style="padding:10px 20px;
+    background:orange; color:black; 
+    border-radius:5px; text-decoration:none;">  
+        Go-to KNN           
+        </a>        
+    </div>
+
+    <div style="text-align:center;
+    margin-top:15px;">            
+    <a href="{% url 'randomforest' %}" style="padding:10px 20px;
+    background:orange; color:black; 
+    border-radius:5px; text-decoration:none;">  
+        Go-to Next Algorithm           
+        </a>        
+    </div>
+
+    </div>
+</div>
+
+{% endblock %}
