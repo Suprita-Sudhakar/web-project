@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Music Instrument Predictor</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(120deg, #1e3c72, #2a5298);
+            color: white;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 50px;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .navbar h1 {
+            font-size: 22px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 80vh;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .text-section {
+            max-width: 500px;
+        }
+
+        .text-section h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .text-section p {
+            font-size: 18px;
+            opacity: 0.8;
+        }
+
+        /* CARD */
+        .card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            width: 300px;
+            text-align: center;
+        }
+
+        input[type="file"] {
+            margin: 15px 0;
+            width: 100%;
+            padding: 8px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: none;
+            background: #00c6ff;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ff4b2b;
+            transform: scale(1.1);
+        }
+
+        img {
+            width: 200px;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-size: 20px;
+            color: #00ffcc;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h1>🎵 AI Predictor</h1>
+    <p>Music Instrument Detection</p>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+
+    <!-- LEFT TEXT -->
+    <div class="text-section">
+        <h2>Detect Musical Instruments with AI</h2>
+        <p>
+            Upload an image and our deep learning model will identify the instrument instantly.
+            Built using CNN & Django.
+        </p>
+    </div>
+
+    <!-- RIGHT CARD -->
+    <div class="card">
+        <h3>Upload Image</h3>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="image" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if image_url %}
+            <img src="{{ image_url }}">
+        {% endif %}
+
+        {% if result %}
+            <div class="result">
+                🎯 {{ result }}
+            </div>
+        {% endif %}
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <p>AI Project | Django + CNN</p>
+</div>
+
+</body>
+</html>
