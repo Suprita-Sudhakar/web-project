@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Migraine Predictor</title>
+
+<style>
+body{
+    background: linear-gradient(135deg,#141e30,#243b55);
+    font-family: Arial;
+    color:white;
+    display:flex;
+    justify-content:center;
+}
+
+.container{
+    width:95%;
+    max-width:1000px;
+    margin-top:20px;
+    padding:20px;
+    border-radius:20px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(15px);
+}
+
+/* Accordion */
+.accordion{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:10px;
+    background: rgba(255,255,255,0.1);
+    color:white;
+    cursor:pointer;
+}
+
+.panel{
+    max-height:0;
+    overflow:hidden;
+    transition:0.4s;
+}
+
+/* Inputs */
+.box{
+    width:48%;
+    margin:6px 1%;
+    display:inline-block;
+}
+
+label{
+    font-size:14px;
+}
+
+input, select{
+    width:100%;
+    padding:8px;
+    border-radius:8px;
+    border:none;
+}
+
+/* Button */
+.submit-btn{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    border:none;
+    border-radius:10px;
+    background:#ff5722;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+/* Result */
+.result-box{
+    margin-top:20px;
+    padding:15px;
+    border-radius:10px;
+    background: rgba(0,255,200,0.2);
+    text-align:center;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2 style="text-align:center;">🧠 AI MIGRAINE PREDICTION USING SUPPORT VECTOR MACHINE</h2>
+
+<form method="POST">
+{% csrf_token %}
+
+<!-- Basic -->
+<button type="button" class="accordion">📌 Basic Details</button>
+<div class="panel">
+
+<div class="box">
+<label>Age:</label>
+<input type="number" name="age"required style="width:50%";>
+</div>
+
+<div class="box">
+<label>Headache Duration (hours)</label>
+<input type="number" name="duration"required style="width:50%";>
+</div>
+
+<div class="box">
+<label>Frequency of Headache</label>
+<input type="number" name="frequency"required style="width:50%";>
+</div>
+
+</div>
+
+<!-- Headache -->
+<button type="button" class="accordion">💢 Headache Details</button>
+<div class="panel">
+
+<div class="box">
+<label>Head Pain Location</label>
+<select name="location"required style="width:50%";>
+<option value="0">One Side</option>
+<option value="1">Both Sides</option>
+<option value="2">Whole Head</option>
+</select>
+</div>
+
+<div class="box">
+<label>Pain Type</label>
+<select name="character"required style="width:50%";>
+<option value="0">Dull</option>
+<option value="1">Throbbing</option>
+<option value="2">Sharp</option>
+</select>
+</div>
+
+<div class="box">
+<label>Pain Intensity</label>
+<select name="intensity"required style="width:50%";>
+<option value="0">No Pain</option>
+<option value="1">Mild</option>
+<option value="2">Moderate</option>
+<option value="3">Severe</option>
+</select>
+</div>
+
+</div>
+
+<!-- Symptoms -->
+<button type="button" class="accordion">🤒 Common Symptoms</button>
+<div class="panel">
+
+<div class="box">
+<label>Nausea (Feeling like vomiting)</label>
+<select name="nausea"required style="width:50%";><option value="0">No</option><option value="1">Yes</option></select>
+</div>
+
+<div class="box">
+<label>Vomiting</label>
+<select name="vomit"required style="width:50%";><option value="0">No</option><option value="1">Yes</option></select>
+</div>
+
+<div class="box">
+<label>Sensitivity to Sound</label>
+<select name="phonophobia"required style="width:50%";><option value="0">No</option><option value="1">Yes</option></select>
+</div>
+
+<div class="box">
+<label>Sensitivity to Light</label>
+<select name="photophobia"required style="width:50%";><option value="0">No</option><option value="1">Yes</option></select>
+</div>
+
+</div>
+
+<!-- Aura -->
+<button type="button" class="accordion">✨ Aura Symptoms</button>
+<div class="panel">
+
+<div class="box">
+<label>Visual Problems</label>
+<select name="visual"required style="width:50%";>
+<option value="0">None</option>
+<option value="1">Blurred Vision</option>
+<option value="2">Flashing Lights</option>
+<option value="3">Zigzag Lines</option>
+<option value="4">Vision Loss</option>
+</select>
+</div>
+
+<div class="box">
+<label>Sensory Issues</label>
+<select name="sensory"required style="width:50%";>
+<option value="0">None</option>
+<option value="1">Mild Tingling</option>
+<option value="2">Severe Numbness</option>
+</select>
+</div>
+
+<div class="box">
+<label>Speech Difficulty</label>
+<select name="dysphasia"required style="width:50%";><option value="0">No</option><option value="1">Yes</option></select>
+</div>
+
+<div class="box">
+<label>Slurred Speech</label>
+<select name="dysarthria"required style="width:50%";><option value="0">No</option><option value="1">Yes</option></select>
+</div>
+
+</div>
+
+<!-- Neuro -->
+<button type="button" class="accordion">🧩 Neurological Symptoms</button>
+<div class="panel">
+
+<div class="box">
+<label>Dizziness (Vertigo)</label>
+<select name="vertigo"required style="width:50%";><option value="0">No</option><option value="1">Yes</option></select>
+</div>
+
+<div class="box">
+<label>Ringing in Ears</label>
+<select name="tinnitus"required style="width:50%";><option value="0">No</option><option value="1">Yes</option></select>
+</div>
+
+<div class="box">
+<label>Hearing Loss</label>
+<select name="hypoacusis"required style="width:50%";><option value="0">No</option><option value="1">Yes</option></select>
+</div>
+
+<div class="box">
+<label>Double Vision</label>
+<select name="diplopia"required style="width:50%";><option value="0">No</option><option value="1">Yes</option></select>
+</div>
+
+<div class="box">
+<label>Vision Defect</label>
+<select name="defect"required style="width:50%";><option value="0">No</option><option value="1">Yes</option></select>
+</div>
+
+<div class="box">
+<label>Loss of Balance</label>
+<select name="ataxia"required style="width:50%";><option value="0">No</option><option value="1">Yes</option></select>
+</div>
+
+</div>
+
+<!-- Additional -->
+<button type="button" class="accordion">⚙️ Additional Details</button>
+<div class="panel">
+
+<div class="box">
+<label>Consciousness Level</label>
+<select name="conscience"required style="width:50%";>
+<option value="0">Normal</option>
+<option value="1">Altered</option>
+</select>
+</div>
+
+<div class="box">
+<label>Tingling Sensation</label>
+<select name="paresthesia"required style="width:50%";>
+<option value="0">No</option>
+<option value="1">Yes</option>
+</select>
+</div>
+
+<div class="box">
+<label>Health Score (DPF)</label>
+<select name="dpf"required style="width:50%";>
+<option value="0">No</option>
+<option value="1">Yes</option>
+</select>
+</div>
+
+</div>
+
+<button type="submit" name="buttonadd" class="submit-btn">Predict</button>
+</form>
+
+{% if result %}
+<div class="result-box">
+    <h2>🧾 Prediction Result</h2>
+    <h3>{{ result.0 }}</h3>
+    <p>{{ result.1 }}</p>
+    <p><strong>Accuracy:</strong> {{ accuracy }}%</p>
+</div>
+{% endif %}
+
+<div style="text-align:center;
+    margin-top:15px;">            
+    <a href="{% url 'randomforestpage' %}" style="padding:10px 20px;
+    background:orange; color:black; 
+    border-radius:5px; text-decoration:none;">  
+        Go-to Next Algorithm           
+        </a>        
+    </div>
+
+</div>
+
+<script>
+let acc = document.querySelectorAll(".accordion");
+acc.forEach(btn=>{
+    btn.onclick = function(){
+        let panel = this.nextElementSibling;
+        panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
+    }
+});
+</script>
+
+</body>
+</html>

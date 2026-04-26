@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: url('https://img.freepik.com/free-vector/technology-wire-mesh-network-connection-digital-background_1017-28407.jpg?semt=ais_hybrid&w=740&q=80');
+      background-size: cover;}
+
+    h1 {
+    color: white;
+    font-weight: 500;
+    text-shadow: 2px 2px 5px black;
+}
+
+h6 {
+    color:white;
+    font-weight: 200;
+
+}
+
+    .card {
+      background-color: #a5a8c2;
+      border-radius: 15px;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn-knn {
+    background-color: #424ca3, #d51766;
+    color: rgb(227, 48, 111);
+    border-radius: 10px;
+  }
+
+  .btn-knn:hover {
+    background-color: #f6963c;
+  }
+
+    .navbar {
+      box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+    }
+
+    
+
+
+  </style>
+</head>
+
+<body>
+
+<!-- ✅ NAVBAR -->
+
+
+<!-- ✅ MAIN CONTENT -->
+<div class="container mt-5">
+
+  <div class="text-center">
+    <h1 class="mb-3">AI and ML Prediction System</h1>
+    <h6>
+        <marquee>
+        Welcome to the Machine Learning Prediction System — explore intelligent models that transform data into accurate predictions.
+    </marquee>
+    </h6>
+    >
+  </div>
+
+  <!-- Cards -->
+  <div class="row mt-5">
+
+    <!-- KNN Card -->
+    <div class="col-md-4 offset-md-4">
+      <div class="card p-4 text-center">
+        <h4>PROJECT-1</h4>
+         <a href="{% url 'place' %}" class="btn btn-knn">PLACEMENT</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Cards -->
+  <div class="row mt-5">
+
+    <!-- KNN Card -->
+    <div class="col-md-4 offset-md-4">
+      <div class="card p-4 text-center">
+        <h4>PROJECT-2</h4>
+            <a href="{% url 'migraine' %}" class="btn btn-knn">MIGRAINE</a>
+      </div>
+    </div>
+    </div>
+
+</div>
+
+<!-- BLOCK -->
+{% block content %}
+{% endblock %}
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
