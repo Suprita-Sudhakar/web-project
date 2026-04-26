@@ -1,4 +1,3 @@
-# web-project
 # EduHealth-AI
 ## AI-Based Multi-Domain Prediction and Classification System Using Django
 # Description
@@ -10,7 +9,7 @@ The system helps users predict outcomes based on input data and provides intelli
 - Python
 - Django
 - HTML, CSS
-- Machine Learning (Scikit-learn)
+- Machine Learning Algorithms
 - Deep Learning (TensorFlow/Keras)
 - SQLite Database
 
@@ -20,6 +19,7 @@ The system helps users predict outcomes based on input data and provides intelli
 - Migraine Prediction Module
 - Music Instrument Classification using CNN
 - Simple and user-friendly interface
+- checks accuracy score compare with different algorithms
 
 # 📂 Project Structure
 
@@ -42,14 +42,22 @@ project/
 
 
 ### 1. Placement Prediction
-This module predicts whether a student will be placed or not. If placed, it estimates salary; if not, it gives improvement suggestions based on performance.
+I used multiple algorithms like Random-Forest, KNN, and Naive-Bayes, compared their accuracy, and selected the best model. It predicts placement, salary if placed, and gives suggestions if not.
 ### 2. Migraine Prediction
 Analyzes user health-related data to predict the possibility of migraine.
-
 ### 3. Music Instruments Classification
 Uses a Convolutional Neural Network (CNN) to classify different musical instruments from images.
 
-## 📸 Screenshots
-<img width="1366" height="768" alt="Screenshot (49)" src="https://github.com/user-attachments/assets/6cdcbcd6-4a8b-418f-ad82-28235ac86fe0" />
+## Author
+**Your Name**
+SUPRITA SUDHAKAR
+---
+
+## Future Improvements
+- Enhance UI/UX design  
+- Add more prediction modules  
+- Improve model accuracy  
+- Deploy the application on cloud platforms (AWS/Heroku)  
+
 
 
