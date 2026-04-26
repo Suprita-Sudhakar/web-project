@@ -50,9 +50,7 @@ Analyzes user health-related data to predict the possibility of migraine.
 Uses a Convolutional Neural Network (CNN) to classify different musical instruments from images.
 
 ## Author
-**Your Name**
-SUPRITA SUDHAKAR
----
+        --SUPRITA SUDHAKAR
 
 ## Future Improvements
 - Enhance UI/UX design  
